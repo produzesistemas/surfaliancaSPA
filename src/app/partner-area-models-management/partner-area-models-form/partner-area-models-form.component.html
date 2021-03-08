@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="py-5">
+        <form [formGroup]="formAdd">
+            <div class="form-group col-md-6">
+                <h5 class="text-white">Cadastro de modelo</h5>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="text-white">Descrição:</label>
+                <input type="text" class="form-control" id="name" formControlName="name"
+                    placeholder="Informe a descrição" />
+                <div *ngIf="submitted && q.name.errors">
+                    <p *ngIf="q.name.errors.required" class="text-danger small">Informe a descrição</p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="text-white">Detalhes:</label>
+                <textarea type="textarea" class="form-control" id="details" formControlName="details"
+                    placeholder="Informe os detalhes" rows="5" maxlength="1000"></textarea>
+                <div *ngIf="submitted && q.details.errors">
+                    <p *ngIf="q.details.errors.required" class="text-danger small">Informe os detalhes</p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <button type="button" class="btn btn-rounded btn-success text-uppercase" (click)="onSave()">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+                <button type="button" class="btn btn-rounded btn-danger text-uppercase" (click)="onCancel()">
+                    <i class="fa fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

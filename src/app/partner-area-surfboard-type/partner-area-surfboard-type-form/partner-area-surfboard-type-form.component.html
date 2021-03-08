@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="py-5">
+        <form [formGroup]="formAdd">
+            <div class="form-group col-md-6">
+                <h5 class="text-white">Cadastro de Tipo de Prancha</h5>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="text-white">Nome:</label>
+                <input type="text" class="form-control" id="name" formControlName="name"
+                    placeholder="Informe o Nome" />
+                <div *ngIf="submitted && q.name.errors">
+                    <p *ngIf="q.name.errors.required" class="text-danger small">Informe o Nome</p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <button type="button" class="btn btn-rounded btn-success text-uppercase" (click)="onSave()">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+                <button type="button" class="btn btn-rounded btn-danger text-uppercase" (click)="onCancel()">
+                    <i class="fa fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
