@@ -36,6 +36,7 @@ export class PartnerAreaSurfboardTypeComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['']
     });
+    this.onSubmit();
   }
 
   get f() { return this.form.controls; }

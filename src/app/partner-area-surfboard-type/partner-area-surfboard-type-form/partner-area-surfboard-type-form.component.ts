@@ -30,7 +30,6 @@ export class PartnerAreaSurfboardTypeFormComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
     });
 
-
     this.route.params.subscribe(params => {
       if (params.id > 0) {
         this.surfboardType.id = Number(params.id);

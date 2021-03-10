@@ -10,7 +10,7 @@ const routes: Routes = [
         component: PartnerAreaSurfboardTypeComponent
     },
     {
-        path: ':isEdit',
+        path: ':id/:isEdit',
         component: PartnerAreaSurfboardTypeFormComponent,
         children: [
             { path: 'partner-area-surfboard-type-form', loadChildren: () => PartnerAreaSurfboardTypeFormModule },

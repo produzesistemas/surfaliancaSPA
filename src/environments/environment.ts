@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   version: '1.0.0 dev',
-  urlApi: 'https://localhost:44310/api/',
-  urlImagesLojas: 'https://localhost:44310/Files/Store/',
-  urlImagesProducts: 'https://localhost:44310/Files/Product/',
+  urlApi: 'https://localhost:44380/api/',
+  urlImagesLojas: 'https://localhost:44380/Files/Store/',
+  urlImagesProducts: 'https://localhost:44380/Files/Product/',
 };
 
 /*
