@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GenericHttpService } from './genericHttpService';
-import { SurfboardType } from '../_models/surfboard-type-model';
+import { BoardType } from '../_models/board-type-model';
 
 @Injectable({ providedIn: 'root' })
-export class SurfboardTypeService extends GenericHttpService<SurfboardType> {
+export class BoardTypeService extends GenericHttpService<BoardType> {
     constructor(private http: HttpClient) {
         super(http);
     }
@@ -22,7 +22,7 @@ export class SurfboardTypeService extends GenericHttpService<SurfboardType> {
     }
 
     getById(id: any) {
-      return this.http.get<SurfboardType>(`${this.getUrlApi()}boardType/${id}`);
+      return this.http.get<BoardType>(`${this.getUrlApi()}boardType/${id}`);
   }
 
 }

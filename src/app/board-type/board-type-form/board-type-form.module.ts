@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PartnerAreaSurfboardTypeComponent } from './partner-area-surfboard-type.component';
-import { SharedModule } from '../share.module';
-import { PartnerAreaSurfboardTypeRoutingModule} from './partner-area-surfboard-type-routing.module';
+import { BoardTypeFormComponent } from './board-type-form.component';
+import { SharedModule } from 'src/app/share.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
     imports: [
@@ -12,14 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        PartnerAreaSurfboardTypeRoutingModule,
         NgbModule
       ],
     declarations: [
-        PartnerAreaSurfboardTypeComponent
+        BoardTypeFormComponent
     ],
-    exports: [ PartnerAreaSurfboardTypeComponent,
+    exports: [ BoardTypeFormComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class PartnerAreaSurfboardTypeModule { }
+export class BoardTypeFormModule { }

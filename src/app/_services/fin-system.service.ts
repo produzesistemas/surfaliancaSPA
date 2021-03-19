@@ -22,12 +22,8 @@ private obj: FinSystem = new FinSystem();
           return this.delete(`finSystem/${id}`);
     }
 
-    set(obj: any) {
-      this.obj = obj;
-    }
-
-    get(): any {
-      return this.obj;
+    getById(id: any) {
+      return this.http.get<FinSystem>(`${this.getUrlApi()}finSystem/${id}`);
   }
 
 }

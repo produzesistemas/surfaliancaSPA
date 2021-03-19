@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PartnerAreaFinSystemFormComponent } from './parter-area-fin-system-form.component';
-import { SharedModule } from 'src/app/share.module';
+import { BoardTypeComponent } from './board-type.component';
+import { SharedModule } from '../share.module';
+import { BoardTypeRoutingModule} from './board-type-routing.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
     imports: [
@@ -12,13 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        BoardTypeRoutingModule,
         NgbModule
       ],
     declarations: [
-        PartnerAreaFinSystemFormComponent
+        BoardTypeComponent
     ],
-    exports: [ PartnerAreaFinSystemFormComponent,
+    exports: [ BoardTypeComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class PartnerAreaFinSystemFormModule { }
+export class BoardTypeModule { }

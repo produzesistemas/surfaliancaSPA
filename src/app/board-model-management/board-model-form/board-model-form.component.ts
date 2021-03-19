@@ -1,25 +1,32 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FinSystem } from 'src/app/_models/fin-system-model';
-import { FinSystemService } from 'src/app/_services/fin-system.service';
+import { ProductModel } from 'src/app/_models/product-model-model';
+import { ProductModelService } from 'src/app/_services/product-model.service';
 import { ToastrService } from 'ngx-toastr';
 
+import * as moment from 'moment';
+import { environment } from '../../../environments/environment';
+
 @Component({
-  selector: 'app-partner-area-fin-system-form',
-  templateUrl: './parter-area-fin-system-form.component.html'
+  selector: 'app-board-model-form',
+  templateUrl: './board-model-form.component.html'
 })
-export class PartnerAreaFinSystemFormComponent implements OnInit {
+export class BoardModelFormComponent implements OnInit {
     formAdd: FormGroup;
   submitted = false;
-  public finSystem: FinSystem = new FinSystem();
+  // public isEdit = false;
+  // public isEditQuotation = false;
+  // public isView = false;
+  // public isNew = false;
+  public productModel: ProductModel = new ProductModel();
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private finSystemService: FinSystemService
+    private productModelService: ProductModelService
   ) { }
 
   get q() { return this.formAdd.controls; }
@@ -30,7 +37,7 @@ export class PartnerAreaFinSystemFormComponent implements OnInit {
         //   this.isEdit = true;
         }
         if (params.isEdit === '1') {
-          this.finSystem = this.finSystemService.get();
+          this.productModel = this.productModelService.get();
         }
       });
 
@@ -45,9 +52,9 @@ export class PartnerAreaFinSystemFormComponent implements OnInit {
     }
 
     load() {
-      this.formAdd.controls.id.setValue(this.finSystem.id);
-      this.formAdd.controls.name.setValue(this.finSystem.name);
-      this.formAdd.controls.details.setValue(this.finSystem.details);
+      this.formAdd.controls.id.setValue(this.productModel.id);
+      this.formAdd.controls.name.setValue(this.productModel.name);
+      this.formAdd.controls.details.setValue(this.productModel.details);
     }
 
     onSave() {
@@ -55,15 +62,15 @@ export class PartnerAreaFinSystemFormComponent implements OnInit {
       if (this.formAdd.invalid) {
         return;
       }
-      const finSystem = new FinSystem(this.formAdd.value);
-      this.finSystemService.save(finSystem).subscribe(result => {
+      const productModel = new ProductModel(this.formAdd.value);
+      this.productModelService.save(productModel).subscribe(result => {
         this.toastr.success('Registro efetuado com sucesso!');
-        this.router.navigate(['/partnerAreaFinSystem']);
+        this.router.navigate(['/board-model']);
     });
     }
 
     onCancel() {
-      this.router.navigate([`/partnerAreaFinSystem`]);
+      this.router.navigate([`/board-model`]);
     }
 
 }

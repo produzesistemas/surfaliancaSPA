@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { PartnerAreaModelsManagementComponent } from './partner-area-models-management.component';
+import { FinSystemManagementComponent } from './fin-system-management.component';
 import { SharedModule } from '../share.module';
-import { PartnerAreaModelsManagementRoutingModule} from './partner-area-models-management-routing.module';
+import { FinSystemManagementRoutingModule} from './fin-system-management-routing.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,14 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        PartnerAreaModelsManagementRoutingModule,
+        FinSystemManagementRoutingModule,
         NgbModule
       ],
     declarations: [
-        PartnerAreaModelsManagementComponent
+        FinSystemManagementComponent
     ],
-    exports: [ PartnerAreaModelsManagementComponent,
+    exports: [ FinSystemManagementComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class PartnerAreaModelsManagementModule { }
+export class FinSystemManagementModule { }

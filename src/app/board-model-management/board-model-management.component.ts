@@ -2,25 +2,32 @@ import { Component, OnInit, TemplateRef, Output, EventEmitter } from '@angular/c
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { FinSystem } from '../_models/fin-system-model';
+import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { environment } from '../../environments/environment';
 import { FilterDefaultModel } from '../_models/filter-default-model';
-import { FinSystemService } from 'src/app/_services/fin-system.service';
+import { ProductModel } from '../_models/product-model-model';
+import { ProductModelService } from 'src/app/_services/product-model.service';
+// import { PartnerAreaModelsFormComponent } from './partner-area-models-form/partner-area-models-form.component';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { ConfirmationDialogService } from '../_shared-component/confirm-dialog/confirm-dialog.service';
 
 @Component({
-  selector: 'app-partner-area-fin-system-management',
-  templateUrl: './parter-area-fin-system-management.component.html'
+  selector: 'app-board-model-management',
+  templateUrl: './board-model-management.component.html'
 })
 
-export class PartnerAreaFinSystemManagementComponent implements OnInit {
+export class BoardModelManagementComponent implements OnInit {
   modalRef: BsModalRef;
   modalDelete: BsModalRef;
   form: FormGroup;
+  formAdd: FormGroup;
   loading = false;
   submitted = false;
-  lst = [];
-  finSystem: any;
+  lstModels = [];
+  isNew = false;
+  productModel: any;
   @Output() action = new EventEmitter();
   page = 1;
   pageSize = 5;
@@ -30,7 +37,7 @@ export class PartnerAreaFinSystemManagementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authenticationService: AuthenticationService,
-    private finSystemService: FinSystemService,
+    private productModelService: ProductModelService,
     private router: Router,
   ) {
   }
@@ -47,35 +54,35 @@ export class PartnerAreaFinSystemManagementComponent implements OnInit {
   onSubmit() {
     const filter: FilterDefaultModel = new FilterDefaultModel();
     filter.name = this.form.controls.name.value;
-    this.finSystemService.getByFilter(filter).subscribe(
+    this.productModelService.getByFilter(filter).subscribe(
       data => {
-        this.lst = data;
+        this.lstModels = data;
       }
     );
   }
 
   onNew() {
-    this.router.navigate([`/partnerAreaFinSystem/0`]);
+    this.router.navigate([`/board-model/0`]);
   }
 
-  edit(obj: FinSystem) {
-    this.finSystemService.set(obj);
-    this.router.navigate([`/partnerAreaFinSystem/1`]);
+  edit(obj: ProductModel) {
+    this.productModelService.set(obj);
+    this.router.navigate([`/board-model/1`]);
   }
 
-  deleteById(template: TemplateRef<any>, finSystem: FinSystem) {
-    this.finSystem = finSystem;
+  deleteById(template: TemplateRef<any>, productModel: ProductModel) {
+    this.productModel = productModel;
     this.modalDelete = this.modalService.show(template, { class: 'modal-md' });
   }
 
   confirmDelete() {
-    this.finSystemService.deleteById(this.finSystem.id).subscribe(() => {
-      const index: number = this.lst.indexOf(this.finSystem);
+    this.productModelService.deleteById(this.productModel.id).subscribe(() => {
+      const index: number = this.lstModels.indexOf(this.productModel);
       if (index !== -1) {
-        this.lst.splice(index, 1);
+        this.lstModels.splice(index, 1);
       }
       this.closeDelete();
-      this.toastr.success('Excluído com sucesso!', '');
+      this.toastr.success('Excluído com sucesso', '');
     });
   }
 

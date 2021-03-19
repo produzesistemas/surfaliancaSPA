@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PartnerAreaSurfboardTypeFormComponent } from './partner-area-surfboard-type-form.component';
+import { FinSystemFormComponent } from './fin-system-form.component';
 import { SharedModule } from 'src/app/share.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -15,10 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         NgbModule
       ],
     declarations: [
-        PartnerAreaSurfboardTypeFormComponent
+        FinSystemFormComponent
     ],
-    exports: [ PartnerAreaSurfboardTypeFormComponent,
+    exports: [ FinSystemFormComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class PartnerAreaSurfboardTypeFormModule { }
+export class FinSystemFormModule { }
