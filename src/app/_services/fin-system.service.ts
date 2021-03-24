@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GenericHttpService } from './genericHttpService';
 import { FinSystem } from '../_models/fin-system-model';
+import { FinColor } from '../_models/fin-color-model';
 
 @Injectable({ providedIn: 'root' })
 export class FinSystemService extends GenericHttpService<FinSystem> {
@@ -25,5 +26,9 @@ private obj: FinSystem = new FinSystem();
     getById(id: any) {
       return this.http.get<FinSystem>(`${this.getUrlApi()}finSystem/${id}`);
   }
+
+  getColors() {
+    return this.http.get<FinColor[]>(`${this.getUrlApi()}finSystem/getColors`);
+}
 
 }

@@ -2,30 +2,26 @@ import { Component, OnInit, TemplateRef, Output, EventEmitter } from '@angular/c
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { environment } from '../../environments/environment';
+import { FinSystem } from '../_models/fin-system-model';
 import { FilterDefaultModel } from '../_models/filter-default-model';
-import { Team } from '../_models/team-model';
-import { TeamService } from 'src/app/_services/team.service';
+import { ConstructionService } from 'src/app/_services/construction.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Construction } from '../_models/construction-model';
 
 @Component({
-  selector: 'app-partner-area-team-management',
-  templateUrl: './partner-area-team-management.component.html'
+  selector: 'app-construction-management',
+  templateUrl: './construction-management.component.html'
 })
 
-export class PartnerAreaTeamManagementComponent implements OnInit {
+export class ConstructionManagementComponent implements OnInit {
   modalRef: BsModalRef;
   modalDelete: BsModalRef;
   form: FormGroup;
-  formAdd: FormGroup;
   loading = false;
   submitted = false;
-  lstModels = [];
-  isNew = false;
-  team: any;
+  lst = [];
+  construction: any;
   @Output() action = new EventEmitter();
   page = 1;
   pageSize = 5;
@@ -35,7 +31,7 @@ export class PartnerAreaTeamManagementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authenticationService: AuthenticationService,
-    private teamService: TeamService,
+    private constructionService: ConstructionService,
     private router: Router,
   ) {
   }
@@ -52,35 +48,38 @@ export class PartnerAreaTeamManagementComponent implements OnInit {
   onSubmit() {
     const filter: FilterDefaultModel = new FilterDefaultModel();
     filter.name = this.form.controls.name.value;
-    this.teamService.getByFilter(filter).subscribe(
-      result => {
-        this.lstModels = result;
+    this.constructionService.getByFilter(filter).subscribe(
+      data => {
+        this.lst = data;
       }
     );
   }
 
   onNew() {
-    this.router.navigate([`/partnerAreaTeam/0/0`]);
+    this.router.navigate([`/construction/0/0`]);
   }
 
-  onEdit(obj: Team) {
-    this.router.navigate([`/partnerAreaTeam/${obj.id}/1`]);
+  edit(obj: FinSystem) {
+    this.router.navigate([`/construction/${obj.id}/1`]);
   }
 
-  onDeleteById(template: TemplateRef<any>, team: Team) {
-    this.team = team;
+  deleteById(template: TemplateRef<any>, construction: Construction) {
+    this.construction = construction;
     this.modalDelete = this.modalService.show(template, { class: 'modal-md' });
   }
 
-  onConfirmDelete() {
-    this.teamService.deleteById(this.team.id).subscribe(() => {
-      this.onCloseDelete();
-      this.toastr.success('Excluído com sucesso', '');
-      this.onSubmit();
+  confirmDelete() {
+    this.constructionService.deleteById(this.construction.id).subscribe(() => {
+      const index: number = this.lst.indexOf(this.construction);
+      if (index !== -1) {
+        this.lst.splice(index, 1);
+      }
+      this.closeDelete();
+      this.toastr.success('Excluído com sucesso!', '');
     });
   }
 
-  onCloseDelete() {
+  closeDelete() {
   this.modalDelete.hide();
   }
 

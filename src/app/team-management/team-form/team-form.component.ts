@@ -9,10 +9,10 @@ import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-partner-area-team-form',
-  templateUrl: './partner-area-team-form.component.html'
+  selector: 'app-team-form',
+  templateUrl: './team-form.component.html'
 })
-export class PartnerAreaTeamFormComponent implements OnInit {
+export class TeamFormComponent implements OnInit {
     formAdd: FormGroup;
   submitted = false;
   public team: Team = new Team();
@@ -77,12 +77,12 @@ export class PartnerAreaTeamFormComponent implements OnInit {
       }
       this.teamService.save(formData).subscribe(result => {
         this.toastr.success('Registro efetuado com sucesso!');
-        this.router.navigate(['/partnerAreaTeam']);
+        this.router.navigate(['/team']);
     });
     }
 
     onCancel() {
-      this.router.navigate([`/partnerAreaTeam`]);
+      this.router.navigate([`/team`]);
     }
     onFileChange(event) {
       if (event.target.files.length > 3) {
@@ -101,7 +101,7 @@ export class PartnerAreaTeamFormComponent implements OnInit {
   }
 
   getImage(nomeImage) {
-    return environment.urlImagesLojas + nomeImage;
+    return environment.urlImagesTeam + nomeImage;
 }
 
 deleteRow(teamImage) {

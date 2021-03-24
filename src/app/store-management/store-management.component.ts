@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
@@ -10,16 +10,18 @@ import { NgxViacepService } from '@brunoc/ngx-viacep';
 
 
 @Component({
-    selector: 'app-partner-area-store-management',
-    templateUrl: './partner-area-store-management.component.html'
+    selector: 'app-store-management',
+    templateUrl: './store-management.component.html'
 })
 
-export class PartnerAreaStoreManagementComponent implements OnInit {
+export class StoreManagementComponent implements OnInit {
     public currentUser;
     form: FormGroup;
     formAddress: FormGroup;
     formFileUpload: FormGroup;
     fileToUpload: File = null;
+    @ViewChild('file') uploadedFile: HTMLInputElement;
+
     uploaded = false;
     logo: any;
     public submitted = false;

@@ -10,7 +10,7 @@ const routes: Routes = [
         component: FinSystemManagementComponent
     },
     {
-        path: ':isEdit',
+        path: ':id/:isEdit',
         component: FinSystemFormComponent,
         children: [
             { path: 'fin-system-form', loadChildren: () => FinSystemFormModule },

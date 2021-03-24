@@ -8,6 +8,8 @@ export const environment = {
   urlApi: 'https://localhost:44380/api/',
   urlImagesLojas: 'https://localhost:44380/Files/Store/',
   urlImagesProducts: 'https://localhost:44380/Files/Product/',
+  urlImagesTeam: 'https://localhost:44380/Files/Team/',
+  urlImagesShaper: 'https://localhost:44380/Files/Shaper/',
 };
 
 /*

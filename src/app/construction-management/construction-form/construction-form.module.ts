@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PartnerAreaTeamManagementComponent } from './partner-area-team-management.component';
-import { SharedModule } from '../share.module';
-import { PartnerAreaTeamManagementRoutingModule} from './partner-area-team-management-routing.module';
+import { ConstructionFormComponent } from './construction-form.component';
+import { SharedModule } from 'src/app/share.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
     imports: [
@@ -12,14 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        PartnerAreaTeamManagementRoutingModule,
         NgbModule
       ],
     declarations: [
-        PartnerAreaTeamManagementComponent
+        ConstructionFormComponent
     ],
-    exports: [ PartnerAreaTeamManagementComponent,
+    exports: [ ConstructionFormComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class PartnerAreaTeamManagementModule { }
+export class ConstructionFormModule { }

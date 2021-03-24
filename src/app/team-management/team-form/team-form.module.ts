@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PartnerAreaTeamFormComponent } from './partner-area-team-form.component';
+import { TeamFormComponent } from './team-form.component';
 import { SharedModule } from 'src/app/share.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -15,10 +15,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         NgbModule
       ],
     declarations: [
-        PartnerAreaTeamFormComponent
+        TeamFormComponent
     ],
-    exports: [ PartnerAreaTeamFormComponent,
+    exports: [ TeamFormComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class PartnerAreaTeamFormModule { }
+export class TeamFormModule { }
