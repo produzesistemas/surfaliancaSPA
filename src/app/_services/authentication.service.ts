@@ -5,22 +5,25 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { GenericHttpService } from './genericHttpService';
 import { ApplicationUser } from 'src/app/_models/application-user';
+import { LoginUser } from '../_models/login-user-model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService extends GenericHttpService<any>{
     protected baseUrl = `${environment.urlApi}`;
     protected baseSite = `${environment.urlApi}`;
-    // private currentUserSubject: BehaviorSubject<any>;
     public currentUser: BehaviorSubject<any>;
 
     constructor(private http: HttpClient) {
         super(http);
         this.currentUser = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('surfalianca_user')));
-        // this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    registerPartner(user: ApplicationUser) {
-        return this.postAll('account/registerPartner', user);
+    registerClient(user: ApplicationUser) {
+        return this.postAll('account/registerClient', user);
+    }
+
+    registerMaster(user: LoginUser) {
+        return this.postAll('account/registerMaster', user);
     }
 
     logout() {
@@ -40,6 +43,10 @@ export class AuthenticationService extends GenericHttpService<any>{
 
     getCurrentUser() {
         return new BehaviorSubject<any>(JSON.parse(localStorage.getItem('surfalianca_user'))).getValue();
+    }
+
+    login(user) {
+        return this.postAll('account/login', user);
     }
 
 }

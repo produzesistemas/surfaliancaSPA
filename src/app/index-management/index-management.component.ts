@@ -20,8 +20,8 @@ export class IndexManagementComponent implements OnInit {
 
     }
 
-    goPartnerArea() {
-        return this.router.navigate(['/login/1']);
-    }
+    // goPartnerArea() {
+    //     return this.router.navigate(['/login-adm']);
+    // }
 
 }

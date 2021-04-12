@@ -22,6 +22,8 @@ import { AppLayoutComponent } from './_layouts/app-layout/app-layout.component';
 import { AppHeaderComponent } from './_layouts/app-header/app-header.component';
 import { StoreLayoutComponent } from './_layouts/store-layout/store-layout.component';
 import { StoreHeaderComponent } from './_layouts/store-header/store-header.component';
+import { LoginLayoutComponent } from './_layouts/login-layout/login-layout.component';
+import { LoginHeaderComponent } from './_layouts/login-header/login-header.component';
 
 
 
@@ -32,7 +34,9 @@ import { StoreHeaderComponent } from './_layouts/store-header/store-header.compo
     AppLayoutComponent,
     AppHeaderComponent,
     StoreLayoutComponent,
-    StoreHeaderComponent
+    StoreHeaderComponent,
+    LoginLayoutComponent,
+    LoginHeaderComponent
   ],
   imports: [
     BrowserModule,

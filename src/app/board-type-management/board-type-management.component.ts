@@ -9,11 +9,11 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-board-type',
-  templateUrl: './board-type.component.html'
+  selector: 'app-board-type-management',
+  templateUrl: './board-type-management.component.html'
 })
 
-export class BoardTypeComponent implements OnInit {
+export class BoardTypeManagementComponent implements OnInit {
   modalRef: BsModalRef;
   modalDelete: BsModalRef;
   form: FormGroup;

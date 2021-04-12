@@ -67,11 +67,11 @@ export class LoginComponent implements OnInit {
         user.userName = socialuser.firstName;
         user.provider = 'GOOGLE';
         user.providerId = socialuser.id;
-        this.authenticationService.registerPartner(user)
+        this.authenticationService.registerClient(user)
         .subscribe(
         result => {
             this.authenticationService.addCurrenUser(result);
-            this.router.navigate(['partnerArea']);
+            // this.router.navigate(['partnerArea']);
         }
         );
 

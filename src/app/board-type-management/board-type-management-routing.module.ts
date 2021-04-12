@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoardTypeComponent } from './board-type.component';
+import { BoardTypeManagementComponent } from './board-type-management.component';
 import { BoardTypeFormComponent } from './board-type-form/board-type-form.component';
 import { BoardTypeFormModule } from './board-type-form/board-type-form.module';
 
 const routes: Routes = [
     {
         path: '',
-        component: BoardTypeComponent
+        component: BoardTypeManagementComponent
     },
     {
         path: ':id/:isEdit',
@@ -22,4 +22,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class BoardTypeRoutingModule { }
+export class BoardTypeManagementRoutingModule { }

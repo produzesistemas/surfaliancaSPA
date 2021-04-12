@@ -1,12 +1,9 @@
-import { Store } from '../_models/store';
 import { FinSystemColor } from './fin-system-color-model';
 
 export class FinSystem {
     name: string;
     details: string;
     id: number;
-    storeId: number;
-    store: Store;
     criadoPor: string;
     alteradoPor: string;
     createDate: Date;

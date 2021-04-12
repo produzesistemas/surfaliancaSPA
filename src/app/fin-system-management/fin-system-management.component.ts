@@ -55,7 +55,7 @@ export class FinSystemManagementComponent implements OnInit {
   }
 
   onNew() {
-    this.router.navigate([`/fin-system/0`]);
+    this.router.navigate([`/fin-system/0/0`]);
   }
 
   edit(obj: FinSystem) {

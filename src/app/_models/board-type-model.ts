@@ -2,7 +2,10 @@ import { Store } from './store';
 export class BoardType {
     name: string;
     id: number;
-    storeId: number;
+    criadoPor: string;
+    alteradoPor: string;
+    createDate: Date;
+    updateDate: Date;
 
 
     public constructor(init?: Partial<BoardType>) {

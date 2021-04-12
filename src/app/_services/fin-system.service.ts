@@ -28,7 +28,7 @@ private obj: FinSystem = new FinSystem();
   }
 
   getColors() {
-    return this.http.get<FinColor[]>(`${this.getUrlApi()}finSystem/getColors`);
+    return this.http.get<FinColor[]>(`${this.getUrlApi()}color/getColors`);
 }
 
 }

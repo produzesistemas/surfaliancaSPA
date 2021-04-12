@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BoardModelManagementComponent } from './board-model-management.component';
+import { BoardTypeManagementComponent } from './board-type-management.component';
 import { SharedModule } from '../share.module';
-import { BoardModelManagementRoutingModule} from './board-model-management-routing.module';
+import { BoardTypeManagementRoutingModule} from './board-type-management-routing.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,14 +12,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        BoardModelManagementRoutingModule,
+        BoardTypeManagementRoutingModule,
         NgbModule
       ],
     declarations: [
-        BoardModelManagementComponent
+        BoardTypeManagementComponent
     ],
-    exports: [ BoardModelManagementComponent,
+    exports: [ BoardTypeManagementComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class BoardModelManagementModule { }
+export class BoardTypeManagementModule { }

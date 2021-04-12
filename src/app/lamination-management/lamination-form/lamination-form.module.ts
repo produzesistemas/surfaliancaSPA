@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BoardTypeComponent } from './board-type.component';
-import { SharedModule } from '../share.module';
-import { BoardTypeRoutingModule} from './board-type-routing.module';
+import { LaminationFormComponent } from './lamination-form.component';
+import { SharedModule } from 'src/app/share.module';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
     imports: [
@@ -12,14 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        BoardTypeRoutingModule,
         NgbModule
       ],
     declarations: [
-        BoardTypeComponent
+        LaminationFormComponent
     ],
-    exports: [ BoardTypeComponent,
+    exports: [ LaminationFormComponent,
         FormsModule,
         ReactiveFormsModule ]
 })
-export class BoardTypeModule { }
+export class LaminationFormModule { }

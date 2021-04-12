@@ -3,14 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexManagementModule } from './index-management/index-management.module';
 import { LoginManagementModule } from './login-management/login-management.module';
 import { PartnerAreaManagementModule } from 'src/app/partner-area-management/partner-area-management.module';
-import { BoardModelManagementModule } from 'src/app/board-model-management/board-model-management.module';
 import { FinSystemManagementModule } from 'src/app/fin-system-management/fin-system-management.module';
 import { TeamManagementModule } from 'src/app/team-management/team-management.module';
 import { StoreManagementModule } from 'src/app/store-management/store-management.module';
 import { StoreLayoutComponent } from 'src/app/_layouts/store-layout/store-layout.component';
 import { AppLayoutComponent } from 'src/app/_layouts/app-layout/app-layout.component';
-import { BoardTypeModule } from './board-type/board-type.module';
+import { LoginLayoutComponent } from 'src/app/_layouts/login-layout/login-layout.component';
+import { BoardTypeManagementModule } from './board-type-management/board-type-management.module';
 import { ConstructionManagementModule } from './construction-management/construction-management.module';
+import { LaminationManagementModule } from './lamination-management/lamination-management.module';
+import { LoginAdmManagementModule } from './login-adm-management/login-adm-management.module';
 
 const routes: Routes = [
 {
@@ -27,13 +29,19 @@ const routes: Routes = [
   component: AppLayoutComponent,
   children: [
     { path: 'partnerArea', loadChildren: () => PartnerAreaManagementModule },
-    { path: 'board-model', loadChildren: () => BoardModelManagementModule },
     { path: 'store', loadChildren: () => StoreManagementModule },
     { path: 'fin-system', loadChildren: () => FinSystemManagementModule },
     { path: 'team', loadChildren: () => TeamManagementModule },
-    { path: 'board-type', loadChildren: () => BoardTypeModule },
+    { path: 'board-type', loadChildren: () => BoardTypeManagementModule },
     { path: 'construction', loadChildren: () => ConstructionManagementModule },
-
+    { path: 'lamination', loadChildren: () => LaminationManagementModule }
+  ]
+},
+{
+  path: '',
+  component: LoginLayoutComponent,
+  children: [
+    { path: 'login-adm', loadChildren: () => LoginAdmManagementModule }
   ]
 },
 ];

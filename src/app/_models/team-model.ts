@@ -2,7 +2,10 @@ export class Team {
     name: string;
     id: number;
     description: string;
-    storeId: number;
+    criadoPor: string;
+    alteradoPor: string;
+    createDate: Date;
+    updateDate: Date;
     public constructor(init?: Partial<Team>) {
         Object.assign(this, init);
     }

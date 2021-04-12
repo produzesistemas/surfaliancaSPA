@@ -1,4 +1,4 @@
-export class Construction {
+export class Lamination {
     name: string;
     details: string;
     id: number;
@@ -7,11 +7,11 @@ export class Construction {
     createDate: Date;
     updateDate: Date;
 
-    public constructor(init?: Partial<Construction>) {
+    public constructor(init?: Partial<Lamination>) {
         Object.assign(this, init);
     }
 
-    static fromJson(jsonData: any): Construction {
-        return Object.assign(new Construction(), jsonData);
+    static fromJson(jsonData: any): Lamination {
+        return Object.assign(new Lamination(), jsonData);
     }
 }

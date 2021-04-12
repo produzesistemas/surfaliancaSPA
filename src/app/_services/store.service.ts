@@ -13,8 +13,8 @@ export class StoreService extends GenericHttpService<any>{
         super(http);
     }
 
-    getByUser(user: ApplicationUser) {
-        return this.postAll('store/getByUser', user);
+    getByUser() {
+        return this.http.get<Store>(`${this.getUrlApi()}store`);
     }
 
     save(store: FormData) {

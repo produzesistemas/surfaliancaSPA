@@ -19,6 +19,10 @@ export class Store {
     nameCity: string;
 
     aspNetUsers: any;
+    criadoPor: string;
+    alteradoPor: string;
+    createDate: Date;
+    updateDate: Date;
 
     public constructor(init?: Partial<Store>) {
         Object.assign(this, init);

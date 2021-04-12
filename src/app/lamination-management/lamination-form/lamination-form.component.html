@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <form [formGroup]="formAdd">
                         <div class="form-group col-md-12">
-                            <h5 class="card-title text-center">Cadastro de Construção</h5>
+                            <h5 class="card-title text-center">Cadastro de Laminação</h5>
                         </div>
                         <div class="form-group col-md-12">
                             <label class="text-white">Nome:</label>
@@ -24,20 +24,20 @@
                             </div>
                         </div>
 
-                        <div *ngIf="construction.id > 0" class="py-2">
+                        <div *ngIf="lamination.id > 0" class="py-2">
                             <div class="form-group col-md-12">
-                                <label>Criado por: {{ construction.criadoPor }}</label>
+                                <label>Criado por: {{ lamination.criadoPor }}</label>
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Em: {{ construction.createDate | date }}</label>
+                                <label>Em: {{ lamination.createDate | date }}</label>
                             </div>
                         </div>
-                        <div *ngIf="construction.alteradoPor">
+                        <div *ngIf="lamination.alteradoPor">
                             <div class="form-group col-md-12">
-                                <label>Última alteração por: {{ construction.alteradoPor }}</label>
+                                <label>Última alteração por: {{ lamination.alteradoPor }}</label>
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Em: {{ construction.updateDate | date }}</label>
+                                <label>Em: {{ lamination.updateDate | date }}</label>
                             </div>
                         </div>
 

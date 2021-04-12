@@ -2,32 +2,26 @@ import { Component, OnInit, TemplateRef, Output, EventEmitter } from '@angular/c
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { environment } from '../../environments/environment';
+import { FinSystem } from '../_models/fin-system-model';
 import { FilterDefaultModel } from '../_models/filter-default-model';
-import { ProductModel } from '../_models/product-model-model';
-import { ProductModelService } from 'src/app/_services/product-model.service';
-// import { PartnerAreaModelsFormComponent } from './partner-area-models-form/partner-area-models-form.component';
+import { LaminationService } from 'src/app/_services/lamination.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { ConfirmationDialogService } from '../_shared-component/confirm-dialog/confirm-dialog.service';
+import { Lamination } from '../_models/lamination-model';
 
 @Component({
-  selector: 'app-board-model-management',
-  templateUrl: './board-model-management.component.html'
+  selector: 'app-lamination-management',
+  templateUrl: './lamination-management.component.html'
 })
 
-export class BoardModelManagementComponent implements OnInit {
+export class LaminationManagementComponent implements OnInit {
   modalRef: BsModalRef;
   modalDelete: BsModalRef;
   form: FormGroup;
-  formAdd: FormGroup;
   loading = false;
   submitted = false;
-  lstModels = [];
-  isNew = false;
-  productModel: any;
+  lst = [];
+  lamination: any;
   @Output() action = new EventEmitter();
   page = 1;
   pageSize = 5;
@@ -37,7 +31,7 @@ export class BoardModelManagementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private authenticationService: AuthenticationService,
-    private productModelService: ProductModelService,
+    private laminationService: LaminationService,
     private router: Router,
   ) {
   }
@@ -54,35 +48,34 @@ export class BoardModelManagementComponent implements OnInit {
   onSubmit() {
     const filter: FilterDefaultModel = new FilterDefaultModel();
     filter.name = this.form.controls.name.value;
-    this.productModelService.getByFilter(filter).subscribe(
+    this.laminationService.getByFilter(filter).subscribe(
       data => {
-        this.lstModels = data;
+        this.lst = data;
       }
     );
   }
 
   onNew() {
-    this.router.navigate([`/board-model/0`]);
+    this.router.navigate([`/lamination/0/0`]);
   }
 
-  edit(obj: ProductModel) {
-    this.productModelService.set(obj);
-    this.router.navigate([`/board-model/1`]);
+  edit(obj: FinSystem) {
+    this.router.navigate([`/lamination/${obj.id}/1`]);
   }
 
-  deleteById(template: TemplateRef<any>, productModel: ProductModel) {
-    this.productModel = productModel;
+  deleteById(template: TemplateRef<any>, lamination: Lamination) {
+    this.lamination = lamination;
     this.modalDelete = this.modalService.show(template, { class: 'modal-md' });
   }
 
   confirmDelete() {
-    this.productModelService.deleteById(this.productModel.id).subscribe(() => {
-      const index: number = this.lstModels.indexOf(this.productModel);
+    this.laminationService.deleteById(this.lamination.id).subscribe(() => {
+      const index: number = this.lst.indexOf(this.lamination);
       if (index !== -1) {
-        this.lstModels.splice(index, 1);
+        this.lst.splice(index, 1);
       }
       this.closeDelete();
-      this.toastr.success('Excluído com sucesso', '');
+      this.toastr.success('Excluído com sucesso!', '');
     });
   }
 

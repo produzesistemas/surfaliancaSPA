@@ -56,7 +56,7 @@ export class StoreManagementComponent implements OnInit {
       });
 
       this.currentUser = this.authenticationService.getCurrentUser();
-      this.storeService.getByUser(this.currentUser).subscribe((result) => {
+      this.storeService.getByUser().subscribe((result) => {
           this.store = result;
           if (this.store) {
             this.logo = environment.urlImagesLojas + this.store.imageName;
@@ -182,7 +182,9 @@ enableControls() {
 setAddress(endereco) {
   this.form.controls.street.setValue(endereco.logradouro);
   this.form.controls.district.setValue(endereco.bairro);
-  this.form.controls.number.setValue(endereco.numero);
+  if (endereco.numero) {
+    this.form.controls.number.setValue(endereco.numero);
+  }
   this.form.controls.nameCity.setValue(endereco.localidade);
 }
 

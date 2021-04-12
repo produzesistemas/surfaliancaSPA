@@ -85,6 +85,13 @@ export class TeamFormComponent implements OnInit {
       this.router.navigate([`/team`]);
     }
     onFileChange(event) {
+
+      const extension = event.target.files[0].name.split('.');
+      if (extension[1] !== 'jpg') {
+        this.onResetFileChange();
+        this.toastr.error('Só é permitido arquivos no formato JPG');
+        return;
+      }
       if (event.target.files.length > 3) {
       return this.toastr.error('Só é permitido anexar três arquivos ou menos!');
       }
@@ -94,6 +101,8 @@ export class TeamFormComponent implements OnInit {
           this.files.push({ file });
         }
       }
+
+
     }
 
     onResetFileChange() {

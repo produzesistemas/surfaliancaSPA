@@ -33,11 +33,11 @@
                         <div *ngFor='let color of colors'>
                             <div class="form-check">
                                 <input type="checkbox" [(ngModel)]="color.isSelected"
-                                [ngModelOptions]="{standalone: true}" (change)="toggle(color)" />
+                                    [ngModelOptions]="{standalone: true}" (change)="toggle(color)" />
                                 <label class="form-check-label ml-2" for="defaultCheck1">
                                     {{ color.name}}
                                 </label>
-                              </div>
+                            </div>
                         </div>
                         <div *ngIf="finSystem.id > 0" class="py-2">
                             <div class="form-group col-md-12">
@@ -61,7 +61,7 @@
                                 <i class="fa fa-save"></i>
                             </button>
                             <button type="button" class="btn btn-rounded btn-danger ml-2" (click)="onCancel()">
-                                <i class="fa fa-undo"></i>
+                                <i class="fas fa-arrow-circle-left"></i>
                             </button>
                         </div>
                     </form>

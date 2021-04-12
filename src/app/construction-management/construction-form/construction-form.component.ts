@@ -36,8 +36,8 @@ export class ConstructionFormComponent implements OnInit {
 
     this.formAdd = this.formBuilder.group({
       id: [0],
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      details: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(500)]],
+      name: ['', [Validators.required, Validators.maxLength(255)]],
+      details: ['', [Validators.required, Validators.maxLength(500)]],
     });
 
     this.load();

@@ -30,10 +30,7 @@ export class FinSystemFormComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if (params.id > 0) {
         this.finSystem.id = Number(params.id);
-        this.load();
-      }
     });
 
     this.formAdd = this.formBuilder.group({
@@ -47,21 +44,25 @@ export class FinSystemFormComponent implements OnInit {
   }
 
   load() {
-    forkJoin(
-      this.finSystemService.getById(this.finSystem.id),
-      this.finSystemService.getColors()
-    ).subscribe(result => {
-      this.finSystem = result[0];
-      this.formAdd.controls.id.setValue(this.finSystem.id);
-      this.formAdd.controls.name.setValue(this.finSystem.name);
-      this.formAdd.controls.details.setValue(this.finSystem.details);
-      this.colors = result[1];
-      this.finSystem.finSystemColors.forEach(finSystemColor => {
-        const find = this.colors.find(x => x.id === finSystemColor.finColorId);
-        if (find) {
-          find.isSelected = true;
-        }
+
+    if (this.finSystem.id > 0) {
+      this.finSystemService.getById(this.finSystem.id).subscribe(result => {
+        this.finSystem = result;
+        this.formAdd.controls.id.setValue(this.finSystem.id);
+        this.formAdd.controls.name.setValue(this.finSystem.name);
+        this.formAdd.controls.details.setValue(this.finSystem.details);
+        this.finSystem.finSystemColors.forEach(finSystemColor => {
+          const find = this.colors.find(x => x.id === finSystemColor.finColorId);
+          if (find) {
+            find.isSelected = true;
+          }
+        });
       });
+    }
+
+
+    this.finSystemService.getColors().subscribe(colors => {
+      this.colors = colors;
     });
   }
 

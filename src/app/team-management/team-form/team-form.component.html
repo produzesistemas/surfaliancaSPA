@@ -26,13 +26,14 @@
                             </div>
                         </div>
                         <div class="form-group col-md-12">
-                                <div class="py-3">
-                                    <label id="labelFileImport" class="btn btn-primary" for="file">
-                                      <i class="fa fa-upload"></i>
-                                    </label>
-                                    <input type="file" #fileUpload name="fileToUpload" id="file" #file style="display: none;"
-                                      (change)="onFileChange($event)" accept=".jpg, .png, .gif, .tiff, .jfif" required multiple/>
-                                  </div>
+                            <div class="py-3">
+                                <label id="labelFileImport" class="btn btn-primary" for="file">
+                                    <i class="fa fa-upload"></i>
+                                </label>
+                                <input type="file" #fileUpload name="fileToUpload" id="file" #file
+                                    style="display: none;" (change)="onFileChange($event)"
+                                    accept=".jpg, .png, .gif, .tiff, .jfif" required multiple />
+                            </div>
                         </div>
                         <div class="col-md-1">
                             <table class="table">
@@ -44,13 +45,6 @@
                                         <td>
                                             <img width="100px" height="100px" src="{{getImage(teamImage.imageName)}}">
                                         </td>
-                                        <td>
-                                            <a class="ml-2" tabindex="-1" role="button" aria-disabled="true"
-                                                title="Excluir" (click)="deleteRow(teamImage)">
-                                                <i class="fa fa-times text-danger"></i>
-                                            </a>
-
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -60,9 +54,8 @@
                             <button type="button" class="btn btn-rounded btn-primary" (click)="onSave()">
                                 <i class="fa fa-save"></i>
                             </button>
-                            <button type="button" class="btn btn-rounded btn-danger ml-2"
-                                (click)="onCancel()">
-                                <i class="fa fa-undo"></i>
+                            <button type="button" class="btn btn-rounded btn-danger ml-2" (click)="onCancel()">
+                                <i class="fas fa-arrow-circle-left"></i>
                             </button>
                         </div>
                     </div>
