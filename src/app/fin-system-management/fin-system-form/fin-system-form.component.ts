@@ -5,7 +5,6 @@ import { FinSystem } from 'src/app/_models/fin-system-model';
 import { FinSystemService } from 'src/app/_services/fin-system.service';
 import { ToastrService } from 'ngx-toastr';
 import { FinSystemColor } from 'src/app/_models/fin-system-color-model';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-fin-system-form',
@@ -18,6 +17,8 @@ export class FinSystemFormComponent implements OnInit {
   hasSelected: any;
   colors: any;
   @ViewChild('selectAll') private selectAll: any;
+
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -40,6 +41,8 @@ export class FinSystemFormComponent implements OnInit {
     });
 
     this.load();
+
+    
 
   }
 
@@ -123,6 +126,11 @@ export class FinSystemFormComponent implements OnInit {
     }
     this.selectAll.nativeElement.checked = allEqual;
   }
+
+
+
+
+  
 
 }
 

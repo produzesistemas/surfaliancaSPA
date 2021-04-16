@@ -8,6 +8,8 @@ import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 registerLocaleData(ptBr);
 
+
+
 @NgModule({
   imports: [
     RouterModule,
@@ -16,6 +18,7 @@ registerLocaleData(ptBr);
     CurrencyMaskModule,
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
+
   ],
   declarations: [
   ],

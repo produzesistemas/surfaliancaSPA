@@ -13,6 +13,10 @@ import { BoardTypeManagementModule } from './board-type-management/board-type-ma
 import { ConstructionManagementModule } from './construction-management/construction-management.module';
 import { LaminationManagementModule } from './lamination-management/lamination-management.module';
 import { LoginAdmManagementModule } from './login-adm-management/login-adm-management.module';
+import { TailManagementModule } from './tail-management/tail-management.module';
+import { ShaperManagementModule } from './shaper-management/shaper-management.module';
+import { BoardModelManagementModule } from './board-model-management/board-model-management.module';
+
 
 const routes: Routes = [
 {
@@ -34,7 +38,12 @@ const routes: Routes = [
     { path: 'team', loadChildren: () => TeamManagementModule },
     { path: 'board-type', loadChildren: () => BoardTypeManagementModule },
     { path: 'construction', loadChildren: () => ConstructionManagementModule },
-    { path: 'lamination', loadChildren: () => LaminationManagementModule }
+    { path: 'lamination', loadChildren: () => LaminationManagementModule },
+    { path: 'tail', loadChildren: () => TailManagementModule },
+    { path: 'shaper', loadChildren: () => ShaperManagementModule },
+    { path: 'board-model', loadChildren: () => BoardModelManagementModule }
+
+
   ]
 },
 {

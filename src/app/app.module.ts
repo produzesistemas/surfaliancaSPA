@@ -25,7 +25,7 @@ import { StoreHeaderComponent } from './_layouts/store-header/store-header.compo
 import { LoginLayoutComponent } from './_layouts/login-layout/login-layout.component';
 import { LoginHeaderComponent } from './_layouts/login-header/login-header.component';
 
-
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -47,6 +47,7 @@ import { LoginHeaderComponent } from './_layouts/login-header/login-header.compo
     HttpClientModule,
     SocialLoginModule,
     ToastrModule.forRoot(),
+    // NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },

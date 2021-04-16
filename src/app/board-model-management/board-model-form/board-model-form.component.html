@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="py-5">
+        <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <form [formGroup]="formAdd">
+                        <h5 class="card-title text-center">Cadastro de Modelo de Prancha</h5>
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Descrição:</label>
+                            <input type="text" class="form-control" id="name" formControlName="name"
+                                placeholder="Informe a descrição" maxlength="255"/>
+                            <div *ngIf="submitted && q.name.errors">
+                                <p *ngIf="q.name.errors.required" class="text-danger small">Informe a descrição</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Rabetas:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione as rabetas'" [settings]="dropdownSettings"
+                                [data]="tails" formControlName="tails" (onSelect)="onItemSelect($event)"
+                                (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.tails.errors">
+                                <p *ngIf="q.tails.errors.required" class="text-danger small">Informe ao menos uma rabeta utilizada no modelo</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Shapers:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione os shapers'" [settings]="dropdownSettings"
+                                [data]="shapers" formControlName="shapers" (onSelect)="onItemSelect($event)"
+                                (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.shapers.errors">
+                                <p *ngIf="q.shapers.errors.required" class="text-danger small">Informe ao menos um Shaper que trabalha nesse modelo</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Laminações:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione as laminações'" [settings]="dropdownSettings"
+                                [data]="laminations" formControlName="laminations" (onSelect)="onItemSelect($event)"
+                                (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.laminations.errors">
+                                <p *ngIf="q.laminations.errors.required" class="text-danger small">Informe ao menos uma laminação para esse modelo</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Construções:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione as construções'" [settings]="dropdownSettings"
+                                [data]="constructions" formControlName="constructions" (onSelect)="onItemSelect($event)"
+                                (onSelectAll)="onSelectAll($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.constructions.errors">
+                                <p *ngIf="q.constructions.errors.required" class="text-danger small">Informe ao menos uma Construção para o modelo</p>
+                            </div>
+                        </div>
+
+                <div class="form-group col-md-6">
+                    <button type="button" class="btn btn-rounded btn-primary" (click)="onSave()">
+                        <i class="fa fa-save"></i>
+                    </button>
+                    <button type="button" class="btn btn-rounded btn-danger ml-2" (click)="onCancel()">
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
