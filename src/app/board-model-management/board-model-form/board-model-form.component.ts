@@ -11,6 +11,9 @@ import { ShaperService } from '../../_services/shaper.service';
 import { TailService } from '../../_services/tail.service';
 import { LaminationService } from '../../_services/lamination.service';
 import { ConstructionService } from '../../_services/construction.service';
+import { FinSystemService } from '../../_services/fin-system.service';
+import { BoardTypeService } from '../../_services/board-type.service';
+import { BottomService } from '../../_services/bottom.service';
 
 @Component({
   selector: 'app-board-model-form',
@@ -25,6 +28,9 @@ export class BoardModelFormComponent implements OnInit {
   shapers = [];
   laminations = [];
   constructions = [];
+  fins = [];
+  boardsType = [];
+  bottoms = [];
   dropdownSettings: IDropdownSettings = {};
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +40,9 @@ export class BoardModelFormComponent implements OnInit {
     private tailService: TailService,
     private laminationService: LaminationService,
     private constructionService: ConstructionService,
+    private finSystemService: FinSystemService,
+    private boardTypeService: BoardTypeService,
+    private bottomService: BottomService,
     private route: ActivatedRoute,
     private boardModelService: BoardModelService
   ) { }
@@ -48,6 +57,10 @@ export class BoardModelFormComponent implements OnInit {
       shapers: ['', [Validators.required]],
       laminations: ['', [Validators.required]],
       constructions: ['', [Validators.required]],
+      fins: ['', [Validators.required]],
+      boardsType: ['', [Validators.required]],
+      bottoms: ['', [Validators.required]],
+      valor: ['', [Validators.required]],
     });
 
     this.route.params.subscribe(params => {
@@ -77,13 +90,19 @@ export class BoardModelFormComponent implements OnInit {
       this.tailService.getByFilter(filter),
       this.shaperService.getByFilter(filter),
       this.laminationService.getByFilter(filter),
-      this.constructionService.getByFilter(filter)
+      this.constructionService.getByFilter(filter),
+      this.finSystemService.getByFilter(filter),
+      this.boardTypeService.getByFilter(filter),
+      this.bottomService.getByFilter(filter)
     )
       .subscribe(result => {
         this.tails = result[0];
         this.shapers = result[1];
         this.laminations = result[2];
         this.constructions = result[3];
+        this.fins = result[4];
+        this.boardsType = result[5];
+        this.bottoms = result[6];
         if (this.boardModel.id > 0) {
           this.load();
         }
@@ -118,10 +137,45 @@ export class BoardModelFormComponent implements OnInit {
     this.router.navigate(['/board-model']);
   }
 
-  onItemSelect(item: any) {
+  onItemSelectTails(item: any) {
     console.log(item);
   }
-  onSelectAll(items: any) {
+  onSelectAllTails(items: any) {
+    console.log(items);
+  }
+
+  onItemSelectConstructions(item: any) {
+    console.log(item);
+  }
+  onSelectAllConstructions(items: any) {
+    console.log(items);
+  }
+
+  onItemSelectShapers(item: any) {
+    console.log(item);
+  }
+  onSelectAllShapers(items: any) {
+    console.log(items);
+  }
+
+  onItemSelectLaminations(item: any) {
+    console.log(item);
+  }
+  onSelectAllLaminations(items: any) {
+    console.log(items);
+  }
+
+  onItemSelectFins(item: any) {
+    console.log(item);
+  }
+  onSelectAllFins(items: any) {
+    console.log(items);
+  }
+
+  onItemSelectBoardTypes(item: any) {
+    console.log(item);
+  }
+  onSelectAllBoardTypes(items: any) {
     console.log(items);
   }
 

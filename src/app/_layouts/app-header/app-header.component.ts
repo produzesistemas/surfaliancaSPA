@@ -15,7 +15,9 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.authenticationService.getCurrentUser();
-
+    if (!this.currentUser) {
+      this.logout();
+    }
   }
 
   logout() {

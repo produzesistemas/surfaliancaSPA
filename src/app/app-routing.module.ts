@@ -16,6 +16,7 @@ import { LoginAdmManagementModule } from './login-adm-management/login-adm-manag
 import { TailManagementModule } from './tail-management/tail-management.module';
 import { ShaperManagementModule } from './shaper-management/shaper-management.module';
 import { BoardModelManagementModule } from './board-model-management/board-model-management.module';
+import { BottomManagementModule } from './bottom-management/bottom-management.module';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
     { path: 'lamination', loadChildren: () => LaminationManagementModule },
     { path: 'tail', loadChildren: () => TailManagementModule },
     { path: 'shaper', loadChildren: () => ShaperManagementModule },
-    { path: 'board-model', loadChildren: () => BoardModelManagementModule }
+    { path: 'board-model', loadChildren: () => BoardModelManagementModule },
+    { path: 'bottom', loadChildren: () => BottomManagementModule },
 
 
   ]

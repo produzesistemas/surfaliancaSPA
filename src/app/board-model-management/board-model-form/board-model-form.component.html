@@ -17,8 +17,8 @@
                         <div class="form-group col-md-12">
                             <label class="text-white">Rabetas:</label>
                             <ng-multiselect-dropdown [placeholder]="'Selecione as rabetas'" [settings]="dropdownSettings"
-                                [data]="tails" formControlName="tails" (onSelect)="onItemSelect($event)"
-                                (onSelectAll)="onSelectAll($event)">
+                                [data]="tails" formControlName="tails" (onSelect)="onItemSelectTails($event)"
+                                (onSelectAll)="onSelectAllTails($event)">
                             </ng-multiselect-dropdown>
                             <div *ngIf="submitted && q.tails.errors">
                                 <p *ngIf="q.tails.errors.required" class="text-danger small">Informe ao menos uma rabeta utilizada no modelo</p>
@@ -28,8 +28,8 @@
                         <div class="form-group col-md-12">
                             <label class="text-white">Shapers:</label>
                             <ng-multiselect-dropdown [placeholder]="'Selecione os shapers'" [settings]="dropdownSettings"
-                                [data]="shapers" formControlName="shapers" (onSelect)="onItemSelect($event)"
-                                (onSelectAll)="onSelectAll($event)">
+                                [data]="shapers" formControlName="shapers" (onSelect)="onItemSelectShapers($event)"
+                                (onSelectAll)="onSelectAllShapers($event)">
                             </ng-multiselect-dropdown>
                             <div *ngIf="submitted && q.shapers.errors">
                                 <p *ngIf="q.shapers.errors.required" class="text-danger small">Informe ao menos um Shaper que trabalha nesse modelo</p>
@@ -39,8 +39,8 @@
                         <div class="form-group col-md-12">
                             <label class="text-white">Laminações:</label>
                             <ng-multiselect-dropdown [placeholder]="'Selecione as laminações'" [settings]="dropdownSettings"
-                                [data]="laminations" formControlName="laminations" (onSelect)="onItemSelect($event)"
-                                (onSelectAll)="onSelectAll($event)">
+                                [data]="laminations" formControlName="laminations" (onSelect)="onItemSelectLaminations($event)"
+                                (onSelectAll)="onSelectAllLaminations($event)">
                             </ng-multiselect-dropdown>
                             <div *ngIf="submitted && q.laminations.errors">
                                 <p *ngIf="q.laminations.errors.required" class="text-danger small">Informe ao menos uma laminação para esse modelo</p>
@@ -48,15 +48,60 @@
                         </div>
 
                         <div class="form-group col-md-12">
+                            <label class="text-white">Sistema de quilhas:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione os sistemas'" [settings]="dropdownSettings"
+                                [data]="fins" formControlName="fins" (onSelect)="onItemSelectFins($event)"
+                                (onSelectAll)="onSelectAllFins($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.fins.errors">
+                                <p *ngIf="q.fins.errors.required" class="text-danger small">Informe ao menos um sistema de quilhas</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
                             <label class="text-white">Construções:</label>
                             <ng-multiselect-dropdown [placeholder]="'Selecione as construções'" [settings]="dropdownSettings"
-                                [data]="constructions" formControlName="constructions" (onSelect)="onItemSelect($event)"
-                                (onSelectAll)="onSelectAll($event)">
+                                [data]="constructions" formControlName="constructions" (onSelect)="onItemSelectConstructions($event)"
+                                (onSelectAll)="onSelectAllConstructions($event)">
                             </ng-multiselect-dropdown>
                             <div *ngIf="submitted && q.constructions.errors">
                                 <p *ngIf="q.constructions.errors.required" class="text-danger small">Informe ao menos uma Construção para o modelo</p>
                             </div>
                         </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Tipos de prancha:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione os tipos de prancha'" [settings]="dropdownSettings"
+                                [data]="boardsType" formControlName="boardsType" (onSelect)="onItemSelectBoardTypes($event)"
+                                (onSelectAll)="onSelectAllBoardTypes($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.boardsType.errors">
+                                <p *ngIf="q.boardsType.errors.required" class="text-danger small">Informe ao menos um tipo de prancha</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label class="text-white">Fundos:</label>
+                            <ng-multiselect-dropdown [placeholder]="'Selecione os fundos'" [settings]="dropdownSettings"
+                                [data]="bottoms" formControlName="bottoms" (onSelect)="onItemSelectBoardTypes($event)"
+                                (onSelectAll)="onSelectAllBoardTypes($event)">
+                            </ng-multiselect-dropdown>
+                            <div *ngIf="submitted && q.bottoms.errors">
+                                <p *ngIf="q.bottoms.errors.required" class="text-danger small">Informe ao menos um fundo para o modelo</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>Valor:</label>
+                            <input currencyMask max="99999999"
+                              [options]="{ prefix: '', thousands: '.', decimal: ',', precision: 2, allowNegative: false }"
+                              maxlength="18" type="text" formControlName="valor" placeholder="Informe o valor..."
+                              class="form-control">
+                              <div *ngIf="submitted && q.valor.errors">
+                                <p *ngIf="q.valor.errors.required" class="text-danger small">Informe um valor</p>
+                              </div>
+                          </div>
+
 
                 <div class="form-group col-md-6">
                     <button type="button" class="btn btn-rounded btn-primary" (click)="onSave()">
